@@ -1,26 +1,36 @@
 
-var express = require('express');
-
-var mongoose=require('mongoose');
-
+var express = require('express');//create express app
+var app=express();
 var bodyParser=require('body-parser');
+var PORT=3000;//set the port
+var mongoose =require('mongoose');
+var router=require('./routes/api');
+const { urlencoded } = require('body-parser');
+mongoose.connect("mongodb+srv://fathi:medmedaliali3@cluster0.79gwe.mongodb.net/sss?retryWrites=true&w=majority",
+{
+         useNewUrlParser: true,
+           
+            useUnifiedTopology: true
+}
 
-//var routes=require('./routes/api')
-var app = express();
-var PORT = 3000;
-// connect to mdb
-mongoose.connect("mongodb://localhost/movie");
-mongoose.Promise=global.Promise;
-
+).then(() => console.log('MongoDB connected...'))
+    .catch(err => console.log(err));
+var connection=mongoose.connection;
+connection.on("connected",function(){
+console.log("connected");
+});
+app.use(bodyParser.urlencoded());
 
 app.use(bodyParser.json());
-app.use("/api",require('./routes/api'));
-app.use(function(err,req,res,next){
-    res.send({error:"fuck"});
 
-});
+app.use("/get",router);
 
+
+    
 app.listen(PORT, function(err){
     if (err) console.log("Error in server setup")
     console.log("Server listening on Port", PORT);
 })
+
+
+

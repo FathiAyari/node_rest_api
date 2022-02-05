@@ -6,13 +6,9 @@ var MoviesScheema=new scheema({
         type:String,
         required:[true,'name field is required']
     },
-    score:{
-        type:Number,
-
-    }
+    score:Number,
 
 });
 
-var Movies=mongoose.model('movies',MoviesScheema);
 
-module.exports=Movies;
+module.exports=mongoose.model('Movies1',MoviesScheema);
