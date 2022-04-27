@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded());
 
 app.use(bodyParser.json());
 
-app.use("/get",router);
+app.use("/",router);
 
 
     
