@@ -5,7 +5,7 @@ const router=express.Router();
 
 
 
-router.get('/',getMovies);
-router.post('/',insertMovie);
+router.get('/get',getMovies);
+router.post('/post',insertMovie);
 
 module.exports=router;

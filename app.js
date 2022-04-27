@@ -2,7 +2,7 @@
 var express = require('express');//create express app
 var app=express();
 var bodyParser=require('body-parser');
-var PORT=3000;//set the port
+var PORT=process.env.PORT || 8080;
 var mongoose =require('mongoose');
 var router=require('./routes/api');
 const { urlencoded } = require('body-parser');
